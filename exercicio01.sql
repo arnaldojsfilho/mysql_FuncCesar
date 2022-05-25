@@ -59,9 +59,6 @@ create table Dependentes(
     primary key (codDependentes)
     );
     
-ALTER TABLE Funcionarios DROP CONSTRAINT funcionarios_ibfk_2;
-ALTER TABLE Funcionarios DROP CONSTRAINT funcionarios_ibfk_3;
-ALTER TABLE Funcionarios DROP CONSTRAINT funcionarios_ibfk_4;
 
 ALTER TABLE Funcionarios ADD FOREIGN KEY (codSupervisor) REFERENCES Supervisores(codSupervisor);
 ALTER TABLE Funcionarios ADD FOREIGN KEY (codDepartamento) REFERENCES Departamentos(codDepartamento);
