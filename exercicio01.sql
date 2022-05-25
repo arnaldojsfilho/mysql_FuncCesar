@@ -1,63 +1,75 @@
-create database cesardb;
+CREATE database cesardb;
 
-use cesardb;   
+USE cesardb;   
 
-create table Funcionarios(
-	cpf integer not null,
-    primeiroNomeFunc varchar(100) not null,
-    inicialNomeDoMeioFunc varchar(100),
-    ultimoNomeFunc varchar(100) not null,
-    enderecoFunc varchar(100) not null,
-    sexoFunc varchar(20) not null,
-    salarioFunc double not null,
-    codSupervisor integer not null,
-    codDepartamento integer not null,
-    codProjeto integer not null,
-    codDependentes integer not null,
-    primary key (cpf)
+CREATE TABLE Funcionarios(
+	
+    cpf integer NOT NULL,
+    primeiroNomeFunc VARCHAR(100) NOT NULL,
+    inicialNomeDoMeioFunc VARCHAR(100),
+    ultimoNomeFunc VARCHAR(100) NOT NULL,
+    enderecoFunc VARCHAR(100) NOT NULL,
+    sexoFunc VARCHAR(20) NOT NULL,
+    salarioFunc DOUBLE NOT NULL,
+    codSupervisor INTEGER NOT NULL,
+    codDepartamento INTEGER NOT NULL,
+    codProjeto INTEGER NOT NULL,
+    codDependentes INTEGER NOT NULL,
+    PRIMARY KEY (cpf)
+	
 );
 
-create table Departamentos(
-	codDepartamento integer not null auto_increment,
-    nomeDepartamento varchar(100) not null,
-    localDepartamento varchar(100) not null,
-    codGerente integer not null,
-    dataDePosseGerencia date not null,
-    codProjeto integer not null,
-    primary key (codDepartamento)
+CREATE TABLE Departamentos(
+	
+    codDepartamento INTEGER NOT NULL AUTO_INCREMENT,
+    nomeDepartamento VARCHAR(100) NOT NULL,
+    localDepartamento VARCHAR(100) NOT NULL,
+    codGerente INTEGER NOT NULL,
+    dataDePosseGerencia DATE NOT NULL,
+    codProjeto INTEGER NOT NULL,
+    PRIMARY KEY (codDepartamento)
+	
 );
 
-create table Projetos(
-	codProjeto integer not null auto_increment,
-    nomeProjeto varchar(100) not null,
-    localProjeto varchar(100) not null,
-    contoleHoraFunc integer not null,
-    primary key (codProjetos)
+CREATE TABLE Projetos(
+	
+    codProjeto INTEGER NOT NULL AUTO_INCREMENT,
+    nomeProjeto VARCHAR(100) NOT NULL,
+    localProjeto VARCHAR(100) NOT NULL,
+    contoleHoraFunc INTEGER NOT NULL,
+    PRIMARY KEY (codProjetos)
+	
 );
 
-create table Supervisores(
-	codSupervisor integer not null auto_increment,
-    nomeSupervisor varchar(100) not null,
-    primary key (codSupervisor)
+CREATE TABLE Supervisores(
+	
+    codSupervisor INTEGER NOT NULL AUTO_INCREMENT,
+    nomeSupervisor VARCHAR(100) NOT NULL,
+    PRIMARY KEY (codSupervisor)
+	
 );
 
-create table GerenteDepartamento(
-	codGerentes integer not null auto_increment,
-    nomeGerente varchar(100) not null,
-    dataDePosseGerencia date not null,
-    codDepartamento integer not null,
-    primary key (codGerentes)
+CREATE TABLE GerenteDepartamento(
+	
+    codGerentes INTEGER NOT NULL AUTO_INCREMENT,
+    nomeGerente VARCHAR(100) NOT NULL,
+    dataDePosseGerencia DATE NOT NULL,
+    codDepartamento INTEGER NOT NULL,
+    PRIMARY KEY (codGerentes)
+	
 );
 
-create table Dependentes(
-	codDependentes integer not null auto_increment,
-    nomeDependentes varchar(100) not null,
-    sexoDependente varchar(20) not null,
-    dataNascimento date not null,
-    grauParentesco varchar(20) not null,
-    codFuncionario integer not null,
-    primary key (codDependentes)
-    );
+CREATE TABLE Dependentes(
+	
+    codDependentes INTEGER NOT NULL AUTO_INCREMENT,
+    nomeDependentes VARCHAR(100) NOT NULL,
+    sexoDependente VARCHAR(20) NOT NULL,
+    dataNascimento DATE NOT NULL,
+    grauParentesco VARCHAR(20) NOT NULL,
+    codFuncionario INTEGER NOT NULL,
+    PRIMARY KEY (codDependentes)
+	
+ );
     
 
 ALTER TABLE Funcionarios ADD FOREIGN KEY (codSupervisor) REFERENCES Supervisores(codSupervisor);
